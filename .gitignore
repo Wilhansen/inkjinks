@@ -1,0 +1,9 @@
+build/*
+*.swp
+.Trash
+.DS_Store
+*~
+*/xcuserdata/*
+*/project.xcworkspace/*
+DerivedData/*
+*~
