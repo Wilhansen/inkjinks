@@ -1,0 +1,169 @@
+@import base
+@import compass/reset
+@import compass/css3/box
+@import compass/css3/box-shadow
+@import compass/typography/text/replacement
+@import compass/utilities/general/clearfix
+
+$border-end-color: rgba(0,0,0,0.45)
+$logo-padding: 20px
+$desktop-break: 8
+
+#content
+	+container
+	+border-box-sizing
+	+clearfix
+	+box-shadow(0 0 1em black)
+	position: relative
+	min-height: 87%
+	background: white
+
+body
+	width: 100%
+	height: 100%
+	background: white
+	position: absolute
+
+header
+	clear: both
+	position: relative
+	.logo
+		width: 100%
+		+replace-text-with-dimensions("header_logo.jpg")
+		vertical-align: middle
+		margin-top: $logo-padding * 0.5
+		margin-bottom: $logo-padding * 0.5
+	nav
+		width: 100%
+		vertical-align: middle
+		display: inline-block
+		position: relative
+		ul
+			width: 100%
+			// +display-box
+			// +box-orient(horizontal)
+			// +box-lines(multiple)
+			// +box-pack(justify)
+
+			// +experimental-value(display,flex)
+			// +experimental(flex-direction,row)
+			// +experimental(flex-wrap,wrap)
+			// +experimental(justify-content,space-around)
+			text-align: justify
+			+experimental(text-justify, distribute-all-lines)
+			margin: auto
+			li
+				// +box-flex(1)
+				display: inline-block
+				font-family: 'Open Sans Condensed', 'Arial Narrow', sans-serif
+				font-size: 30px
+				padding: 0 3px 0 3px
+			&:after
+				content: ''
+				width: 100%
+				display: inline-block
+				font-size: 0
+				line-height: 0
+			a
+				text-decoration: none
+				color: black
+			a:hover
+				text-decoration: underline
+	ul.links
+		clear: both
+		background: black
+		text-align: right
+		padding-top: 5px
+		padding-bottom: 5px
+		display: inline-block
+		width: 100%
+		li
+			display: inline
+			margin-left: 15px
+			margin-right: 15px
+		a
+			display: inline-block
+		a[href*="deviantart.com"]
+			+replace-text-with-dimensions("menu_da.png")
+			&:hover
+				background-image: image-url("menu_daH.png")
+		a[href*="facebook.com"]
+			+replace-text-with-dimensions("menu_fb.png")
+			&:hover
+				background-image: image-url("menu_fbH.png")
+		a[href*="twitter.com"]
+			+replace-text-with-dimensions("menu_twit.png")
+			&:hover
+				background-image: image-url("menu_twitH.png")
+
+
+#banner
+	clear: both
+	padding-top: 30px
+	text-align: center
+
+.left
+	padding-top: 10px
+	h2
+		+replace-text("home_updates.jpg")
+		padding-bottom: 40px
+		text-align: center
+	ul
+		margin-left: 30px
+		margin-right: 10px
+		list-style-image: image-url("bullet_red.gif")
+		font-family: myriadpro-regular
+		font-size: 15px
+		li
+			padding-bottom: 20px
+			text-align: justify
+			color: #5B5B5B
+
+
+.right
+	text-align: center
+	img
+		margin-top: 40px
+
++at-breakpoint($desktop-break)
+	#content
+		+container
+	body:before
+		position: fixed
+		background: black
+		width: 100%
+		height: 17%
+		bottom: 0
+		content: " "
+		z-index: -10
+	header
+		clear: both
+		position: relative
+		.logo
+			+span-columns(3)
+		nav
+			+span-columns(5 omega)
+			vertical-align: middle
+			//hard coded D:<
+			top: (image-height("header_logo.jpg") + $logo-padding - 36px) * 0.5
+			height: 36px
+			display: inline-block
+			position: relative
+			border-left: solid 2px
+			padding: 0 10px 0 10px
+			ul
+				margin-top: 3px
+				li
+					font-size: 30px
+		ul.links
+			clear: both
+	#banners
+		$banner-margin: (888 - image-width("home_banner1.jpg")) * 0.5
+		margin: 30px $banner-margin 0 $banner-margin
+	.left
+		+span-columns(4)
+	.right
+		+span-columns(4 omega)
+
+@import banner_animation
+

@@ -1,0 +1,116 @@
+@import compass/css3/animation
+
+$banner-height: 144px
+$n-banners: 5
+$period: 25s
+/* 0 to 1, percentage of time alloted per slide */
+$transition-factor: .1
+
+/* $banner-time + $transition-duration */
+$per-segment: (100 / $n-banners)
+$banner-time: $per-segment * (1.0 - $transition-factor)
+$transition-duration: $per-segment * $transition-factor
+
+#banners
+	background: #000
+	overflow: hidden
+	height: $banner-height
+	ul
+		position: relative
+		li
+			height: $banner-height
+			width: 100%
+			position: absolute
+			list-style: none
+			text-align: center
+			a
+				text-decoration: none
+			div
+				position: relative
+				bottom: $banner-height * 0.5
+				padding: 10px 0 10px 20px
+				font-family: 'Open Sans Condensed', myriadpro-regular, 'Arial Narrow', sans-serif
+				font-size: $banner-height * 0.25
+				text-align: left
+				background: rgba(0, 0, 0, 0.7)
+				color: white
+				min-width: 25%
+				opacity: 0
+				transition: all 0.3s ease-in-out
+			a:hover
+				div
+					opacity: 1
+				
+		@for $i from 1 through $n-banners
+			li:nth-child(#{$i})
+				+animation(cycle-#{$i} $period linear infinite)
+	ul:after
+		$progress-bar-height: 5px
+		background: black
+		content: " "
+		position: absolute
+		height: $progress-bar-height
+		top: $banner-height - $progress-bar-height
+		width: 100%
+		+animation(progress-animation $period ease-out infinite)
+
+	&:hover li, &:hover ul:after
+		+animation-play-state(paused)
+
+@for $i from 1 through $n-banners
+	+keyframes(cycle-#{$i})
+		@if $i != 1
+			0%
+				top: -$banner-height
+				opacity: 0
+				z-index: -1
+			#{($i - 1) * $per-segment - $transition-duration}%
+				top: -$banner-height
+				opacity: 0
+				z-index: 0
+
+		#{($i - 1) * $per-segment}%
+			top: 0px
+			opacity: 1
+			z-index: 0
+		#{($i - 1) * $per-segment + $banner-time}%
+			top: 0px
+			opacity: 1
+			z-index: 0
+		#{$i * $per-segment}%
+			top: $banner-height
+			opacity: 0
+		@if $i == 1
+			#{$per-segment * 1.1}%
+				top: $banner-height
+				opacity: 0
+			#{$per-segment * 1.2}%
+				top: -$banner-height
+				opacity: 0
+				z-index: -1
+			#{100 - $transition-duration}%
+				top: -$banner-height
+				opacity: 0
+				z-index: 0
+			100%
+				top: 0px
+				opacity: 1
+		@else
+			100%
+				top: $banner-height
+				opacity: 0
+
++keyframes(progress-animation)
+	@for $i from 0 to $n-banners
+		#{$i * $per-segment}%
+			width: 0%
+			opacity: 0
+		#{$i * $per-segment + $banner-time * 0.1}%
+			opacity: 1
+		#{$i * $per-segment + $banner-time * 0.9}%
+			opacity: 1
+		#{$i * $per-segment + $banner-time}%
+			width: 100%	
+			opacity: 0
+	100%
+		opacity: 0		
