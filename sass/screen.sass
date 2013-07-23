@@ -24,6 +24,8 @@ $text-color: #3B3B3B
 		text-align: justify
 	p
 		margin: 10px 15px 10px 15px
+	> div
+		padding: 0 15px 0 15px
 
 body
 	width: 100%
@@ -48,15 +50,6 @@ header
 		position: relative
 		ul
 			width: 100%
-			// +display-box
-			// +box-orient(horizontal)
-			// +box-lines(multiple)
-			// +box-pack(justify)
-
-			// +experimental-value(display,flex)
-			// +experimental(flex-direction,row)
-			// +experimental(flex-wrap,wrap)
-			// +experimental(justify-content,space-around)
 			text-align: justify
 			+experimental(text-justify, distribute-all-lines)
 			margin: auto
@@ -117,13 +110,16 @@ header
 
 h1, h2
 	margin-top: 20px
-	padding-bottom: 40px
+	margin-bottom: 30px
 	text-align: center
 	color: black
 
+.tweets > iframe
+	width: 100%
 
 ul
 	list-style-image: image-url("bullet_red.gif")
+	padding-left: 20px
 	li
 		padding-bottom: 20px
 		text-align: justify
@@ -214,9 +210,6 @@ ul.crewlist
 .left, .right, .news_container, .tweets
 	padding-top: 20px
 
-.left ul, .news_container ul
-	margin-left: 30px
-	margin-right: 10px
 .tweets
 	margin-top: 15px
 	padding: 0px 10px 0px 10px
@@ -244,8 +237,9 @@ form
 		+span-columns(4)
 
 .events_logos_section
-	padding: 0 15px 0 15px
-	margin: 40px -15px 0 -15px
+	padding-top: 20px !important
+	img
+		height: 50px
 
 .events_section, .events_logos_section
 	margin-top: 30px
@@ -294,8 +288,6 @@ form
 		+span-columns(6 omega)
 	.news_container
 		+span-columns(7)
-		p
-			margin-right: 5px
 	.tweets
 		+span-columns(5 omega)
 		padding: 0px 15px 0px 0px
@@ -344,6 +336,4 @@ form
 		input[type="submit"]
 			+pre(4)
 			+span-columns(4)
-
-@import banner_animation
 
