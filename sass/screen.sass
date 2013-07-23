@@ -5,9 +5,9 @@
 @import compass/typography/text/replacement
 @import compass/utilities/general/clearfix
 
-$border-end-color: rgba(0,0,0,0.45)
 $logo-padding: 20px
-$desktop-break: 8
+$desktop-break: 12
+$text-color: #3B3B3B
 
 #content
 	+container
@@ -17,6 +17,13 @@ $desktop-break: 8
 	position: relative
 	min-height: 87%
 	background: white
+	font-family: myriadpro-regular
+	font-size: 15px
+	color: $text-color
+	div
+		text-align: justify
+	p
+		margin: 10px 15px 10px 15px
 
 body
 	width: 100%
@@ -28,6 +35,7 @@ header
 	clear: both
 	position: relative
 	.logo
+		display: block
 		width: 100%
 		+replace-text-with-dimensions("header_logo.jpg")
 		vertical-align: middle
@@ -56,8 +64,10 @@ header
 				// +box-flex(1)
 				display: inline-block
 				font-family: 'Open Sans Condensed', 'Arial Narrow', sans-serif
-				font-size: 30px
-				padding: 0 3px 0 3px
+				font-size: 28px
+				color: black
+				padding: 0 2px 0 2px
+
 			&:after
 				content: ''
 				width: 100%
@@ -69,6 +79,9 @@ header
 				color: black
 			a:hover
 				text-decoration: underline
+			a.current
+				color: #ff474f
+
 	ul.links
 		clear: both
 		background: black
@@ -102,28 +115,143 @@ header
 	padding-top: 30px
 	text-align: center
 
-.left
-	padding-top: 10px
-	h2
-		+replace-text("home_updates.jpg")
-		padding-bottom: 40px
-		text-align: center
-	ul
-		margin-left: 30px
-		margin-right: 10px
-		list-style-image: image-url("bullet_red.gif")
-		font-family: myriadpro-regular
-		font-size: 15px
-		li
-			padding-bottom: 20px
-			text-align: justify
-			color: #5B5B5B
+h1, h2
+	margin-top: 20px
+	padding-bottom: 40px
+	text-align: center
+	color: black
 
+
+ul
+	list-style-image: image-url("bullet_red.gif")
+	li
+		padding-bottom: 20px
+		text-align: justify
+
+ul.news
+	list-style: none
+	text-align: left
+	li
+		h3
+			font-family: myriadpro-boldit
+			font-size: 1.6em
+		h4
+			font-family: myriadpro-semiboldit
+			font-size: 1.2em
+		p
+			text-align: justify
+
+ul.releases
+	list-style: none
+	clear: both
+	display: block
+	li
+		text-align: center
+		h3
+			font-family: myriadpro-boldit
+			font-size: 1.2em
+		h4
+			font-family: myriadpro-semiboldit
+	+at-breakpoint($desktop-break)
+		width: 100%
+		margin-left: 10px
+		li
+			text-align: left
+			display: inline-block
+			+span-columns(6)
+			&:nth-child(2n)
+				+omega
+			img
+				display: block
+				+span-columns(2, 6)
+
+ul.covers
+	display: block
+	text-align: center
+	li
+		margin: 0
+		display: inline-block
+		text-align: center
+		width: columns(1)
+		img
+			display: block
+			width: 100%
+
+ul#event_list
+	list-style: none
+	li
+		clear: both
+		display: block
+		padding: 10px 10px 30px 10px
+		border-bottom: solid 1px
+		h3
+			font-family: myriadpro-boldit
+			font-size: 1.6em
+		h4
+			font-family: myriadpro-semiboldit
+			font-size: 1.2em
+	li:last-child
+		border-bottom: none
+
+ul.crewlist
+	list-style: none
+	margin: 30px 20px 0 20px
+	li
+		text-align: center
+		h3
+			font-family: myriadpro-semiboldit
+			font-size: 1.2em
+		h4
+			font-family: myriadpro-regular
+			font-size: 1.1em
+		a
+			text-decoration: none
+			font-style: oblique
+			color: $text-color
+			&:hover
+				text-decoration: underline
+
+.left, .right, .news_container, .tweets
+	padding-top: 20px
+
+.left ul, .news_container ul
+	margin-left: 30px
+	margin-right: 10px
+.tweets
+	margin-top: 15px
+	padding: 0px 10px 0px 10px
+
+.left
+	text-align: center !important
 
 .right
 	text-align: center
 	img
 		margin-top: 40px
+
+form
+	p
+		+clearfix
+		vertical-align: baseline
+	label
+		display: inline-block
+		text-align: left
+		width: 100%
+	input, textarea
+		width: 100%
+	input[type="submit"]
+		+pre(2)
+		+span-columns(4)
+
+.events_logos_section
+	padding: 0 15px 0 15px
+	margin: 40px -15px 0 -15px
+
+.events_section, .events_logos_section
+	margin-top: 30px
+	h2
+		padding-bottom: 20px
+
 
 +at-breakpoint($desktop-break)
 	#content
@@ -140,9 +268,9 @@ header
 		clear: both
 		position: relative
 		.logo
-			+span-columns(3)
+			+span-columns(5)
 		nav
-			+span-columns(5 omega)
+			+span-columns(7 omega)
 			vertical-align: middle
 			//hard coded D:<
 			top: (image-height("header_logo.jpg") + $logo-padding - 36px) * 0.5
@@ -161,9 +289,61 @@ header
 		$banner-margin: (888 - image-width("home_banner1.jpg")) * 0.5
 		margin: 30px $banner-margin 0 $banner-margin
 	.left
-		+span-columns(4)
+		+span-columns(6)
 	.right
-		+span-columns(4 omega)
+		+span-columns(6 omega)
+	.news_container
+		+span-columns(7)
+		p
+			margin-right: 5px
+	.tweets
+		+span-columns(5 omega)
+		padding: 0px 15px 0px 0px
+	div > h2
+		clear: both
+	.events_section
+		+span-columns(9)
+	.events_logos_section
+		+span-columns(3 omega)
+		+border-box-sizing
+		border-left: solid 2px
+		height: 100%
+		position: absolute
+		right: 0
+	ul#event_list
+		li
+			h3
+				margin-top: 20px
+			img
+				float: left
+		li:nth-child(2n)
+			text-align: right
+			img
+				float: right
+				padding-left: 10px
+	ul.crewlist
+		li
+			text-align: left
+			+span-columns(6)
+			&:nth-child(2n)
+				+omega
+			img
+				+span-columns(3)
+				float: left
+			p
+				margin: 30px 0 0 0 !important
+	form
+		label
+			width: columns(2, 6)
+			text-align: right
+		input, textarea
+			width: columns(4, 6)
+			display: inline-block
+		textarea
+			vertical-align: text-top
+		input[type="submit"]
+			+pre(4)
+			+span-columns(4)
 
 @import banner_animation
 

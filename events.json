@@ -1,0 +1,26 @@
+[
+	{
+		"title": "Oh-No! Manga Cosplay Camp 2",
+		"date_start": "2013-07-07T09:00",
+		"date_end": "2013-07-07T23:00",
+		"location": "SMX Hall 1, SM Mall of Asia",
+		"logo": "img/events/2013_onm-cc2.jpg",
+		"about": "Catch Inkjinks and the crew in this year's biggest cosplay convention at the Oh-No! Manga Cosplay Camp 2 on July 7 at SMX Hall 1, SM Mall of Asia. New releases and many more surprises in store!"
+	},
+	{
+		"title": "Komikon Indieket 2013",
+		"date_start": "2013-08-10T10:00",
+		"date_end": "2013-08-10T19:00",
+		"location": "Bayanihan Center, Pasig City",
+		"logo": "img/events/2013_indieket.jpg",
+		"about": "The Inkjinks team will be at Komikon Indieket 2013, the second Komikon grand independent komiks market. Don't forget to visit our booth at the Bayanihan Center, Pasig City on August 10!"
+	},
+	{
+		"title": "Otaku Expo 2013",
+		"date_start": "2013-08-17T10:00",
+		"date_end": "2013-08-18T21:00",
+		"location": "Megatrade Hall, SM Megamall",
+		"logo": "img/events/2013_otakuexpoaug.jpg",
+		"about": "Get to see amazing cosplays and more at the Otaku Expo 2013 on August 17-18 at the Megatrade Halls inside SM Megamall. We'll be waiting for you in the Inkjinks booth, so come visit us!"
+	}
+]
