@@ -26,13 +26,13 @@
 				} else {
 					s = months[from.getMonth()] + 
 						" " + (from.getDate() + 1) +
-						"-" + (to.getDate() + 1) +
+						"–" + (to.getDate() + 1) +
 						", " + from.getFullYear();
 				}
 			} else {
 				s = months[from.getMonth()] + 
 					" " + (from.getDate() + 1) +
-					"-" + months[to.getMonth()] + 
+					"–" + months[to.getMonth()] + 
 					" " + (to.getDate() + 1) +
 					", " + from.getFullYear();
 			}
@@ -40,7 +40,7 @@
 			s = months[from.getMonth()] + 
 				" " + (from.getDate() + 1) +
 				", " + from.getFullYear() +
-				"-" + months[to.getMonth()] + 
+				"–" + months[to.getMonth()] + 
 				" " + (to.getDate() + 1) +
 				", " + to.getFullYear()
 		}
