@@ -44,18 +44,18 @@ $transition-duration: $per-segment * $transition-factor
 		@for $i from 1 through $n-banners
 			li:nth-child(#{$i})
 				+animation(cycle-#{$i} $period linear infinite)
-	ul:after
-		$progress-bar-height: 5px
-		background: black
-		content: " "
-		position: absolute
-		height: $progress-bar-height
-		top: $banner-height - $progress-bar-height
-		width: 100%
-		+animation(progress-animation $period ease-out infinite)
-
-	&:hover li, &:hover ul:after
+	&:hover li, &:hover #banner_progress_bar
 		+animation-play-state(paused)
+
+#banner_progress_bar
+	$progress-bar-height: 5px
+	background: black
+	content: " "
+	position: absolute
+	height: $progress-bar-height
+	top: $banner-height - $progress-bar-height
+	width: 100%
+	+animation(progress-animation $period ease-out infinite)
 
 @for $i from 1 through $n-banners
 	+keyframes(cycle-#{$i})
