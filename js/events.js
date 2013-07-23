@@ -11,7 +11,7 @@
 	function pad(s, n) {
 		s = s.toString();
 		while ( s.length < n )
-			s += '0';
+			s = '0' + s;
 		return s;
 	}
 
