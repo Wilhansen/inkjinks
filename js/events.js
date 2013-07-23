@@ -59,12 +59,12 @@
 		//first, convert the date fields
 		for (var i = data.length - 1; i >= 0; i--) {
 			var d = data[i];
-			d.date_end = new Date(d.date_end);
+			d.date_end = new Date(d.date_end+"+08:00");
 			if ( d.date_end < now ) {
 				data.splice(i, 1);
 				continue;
 			}
-			d.date_start = new Date(d.date_start);
+			d.date_start = new Date(d.date_start+"+08:00");
 		};
 
 		//then sort
