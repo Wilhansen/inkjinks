@@ -8,6 +8,8 @@
 $logo-padding: 20px
 $desktop-break: 12
 $text-color: #3B3B3B
+$footer-height: 17%
+$content-min-height: 87%
 
 #content
 	+container
@@ -15,7 +17,7 @@ $text-color: #3B3B3B
 	+clearfix
 	+box-shadow(0 0 1em black)
 	position: relative
-	min-height: 87%
+	min-height: $content-min-height
 	background: white
 	font-family: myriadpro-regular
 	font-size: 15px
@@ -250,12 +252,13 @@ form
 +at-breakpoint($desktop-break)
 	#content
 		+container
-	body:before
-		position: fixed
+	footer
 		background: black
 		width: 100%
-		height: 17%
-		bottom: 0
+		height: $footer-height
+		position: relative
+		top: (100% - $content-min-height) - $footer-height
+		//margin-top: ($footer-height - $content-min-height) / $footer-height
 		content: " "
 		z-index: -10
 	header
